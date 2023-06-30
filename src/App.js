@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from './login/Login';
+import ListadoHome from './listado/ListadoHome';
+import ItemPersonajes from './item/ItemPersonajes';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [user, setUser] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route exact path='/' name='Login' render={() => <Login setUser={setUser} />} />          
+          <Route exact path='/inicio' name='Inicio' render={() => <ListadoHome user={user} setUser={setUser} />} />
+          <Route exact path='/personajes' name='Personajes' render={() => <ItemPersonajes />} />
+        </Switch>
+      </Router>
+      {/* {
+        !user.length > 0
+
+          ? <Login setUser={setUser} />
+          : <ListadoHome user={user} setUser={setUser} />
+      } */}
+
     </div>
   );
+
 }
 
 export default App;
