@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import FGfondo from '../img/FGfondo.jpg'
+import peterGriffin from '../img/peterGriffin.png'
 import PeterLogo from '../img/PeterLogo.png'
 import { AppBar, Toolbar, CssBaseline, Button, IconButton, Typography, Drawer, Paper, Divider, Container } from '@material-ui/core'
 import { Menu as MenuIcon } from '@mui/icons-material'
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: '0.5em',
         marginBottom: '1em',
     },
-    figuraInicio: {
+    figuraPersonaje: {
         width: '500px',
         maxWidth: '85%',
         cursor: 'pointer',
@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function ListadoHome({ user, setUser }) {
+export default function PeterG({ user, setUser }) {
 
     const classes = useStyles();
     const history = useHistory();
@@ -132,18 +132,29 @@ export default function ListadoHome({ user, setUser }) {
 
             {/* CONTENIDO */}
             <br /> <br /> <br /> <br />
-            <Typography className={classes.textoTitulo} >
-                <b>Bienvenido al inicio, {user[0]}</b>
-            </ Typography>
-            <div className={classes.divFigura}>
-                <img src={FGfondo} className={classes.figuraInicio} alt="Family guy logo" onClick={irPersonajes} />
-            </div>
+            <Typography className={classes.textoTitulo} ><b>Peter Griffin</b></ Typography>
             <Typography className={classes.textoAux}>
-                En esta página podrás conocer acerca de los personajes principales de la serie Family Guy.
+            Justin Peter Löwenbräu Griffin, Sr. es el personaje principal de la serie Padre de Familia.
+             Es un hombre de ascendencia irlandesa, sufre de retraso mental y vive en Quahog (Rhode Island) junto a su familia, los Griffin.
+            </Typography>
+            <div className={classes.divFigura}>
+                <img src={peterGriffin} className={classes.figuraPersonaje} alt="Family guy logo" onClick={irPersonajes} />
+            </div>
+            <Typography className={classes.textoTitulo} ><b>Historia</b></ Typography>
+            <Typography className={classes.textoAux}>
+            Nacido en México, su madre trató infructuosamente de abortarlo. Su verdadero padre Mickey McFinnigan lo abandonó y fue 
+            criado por Francis Griffin en Quahog. Desde niño empezó a mostrar signos de debilidad mental. A los 18 conoció a Lois 
+            en el club campestre de Newport, poco después se casaron y procrearon a una niña: Meg Giffin, a quien querían abortar 
+            pero no pudieron debido a que el médico era manco. 4 años después procrearon a un niño llamado Chris Griffin por accidente 
+            por un condón defectuoso; debido a una demanda impuesta a la empresa de preservativos, los Griffin ganan el caso y compran 
+            una casa en Quahog. Tras 12 años Peter y Lois conciben a su último hijo: Stewie Griffin. Peter trabajó desde los años 70 
+            para la fábrica de juguetes Feliz Fortuna, como un obrero de ensamble, después recoge a un perro de la calle llamado Brian 
+            quien se convertiría en su mejor amigo. Peter pierde su empleo debido a la muerte de su jefe, dedicándose a ser pescador, 
+            actualmente trabaja para la Cervecería Pawtucket en donde está bajo el cuidado de su jefa Angela.
             </Typography>
             <br />
             <div className={classes.divBoton}>
-                <Button className={classes.buttonlog} variant='contained' color='secondary' onClick={irPersonajes}>Ver personajes principales</Button>
+                <Button className={classes.buttonlog} variant='contained' color='secondary' onClick={irPersonajes}>Regresar a personajes</Button>
             </div>
             <br /> <br /> <br /> <br />
         </div>
