@@ -42,7 +42,10 @@ const useStyles = makeStyles(theme => ({
     textoAux: {
         marginLeft: 20,
         marginRight: 20,
-        textAlign: 'center'
+        textAlign: 'justify'
+    },
+    container: {
+        marginTop: theme.spacing(0.5)
     },
     divFigura: {
         display: 'flex',
@@ -53,7 +56,6 @@ const useStyles = makeStyles(theme => ({
     figuraPersonaje: {
         width: '500px',
         maxWidth: '85%',
-        cursor: 'pointer',
     },
     divBoton: {
         display: 'flex',
@@ -130,24 +132,27 @@ export default function PeterG({ user, setUser }) {
                 </footer>
             </>
 
+            <Container maxWidth='lg' component={Paper} className={classes.container}>
             {/* CONTENIDO */}
             <br /> <br /> <br /> <br />
             <Typography className={classes.textoTitulo} ><b>Peter Griffin</b></ Typography>
+            <div className={classes.divFigura}>
+                <img src={peterGriffin} className={classes.figuraPersonaje} alt="Peter Griffin"/>
+            </div>
             <Typography className={classes.textoAux}>
             Justin Peter Löwenbräu Griffin, Sr. es el personaje principal de la serie Padre de Familia.
              Es un hombre de ascendencia irlandesa, sufre de retraso mental y vive en Quahog (Rhode Island) junto a su familia, los Griffin.
             </Typography>
-            <div className={classes.divFigura}>
-                <img src={peterGriffin} className={classes.figuraPersonaje} alt="Family guy logo" onClick={irPersonajes} />
-            </div>
+            <br/>
             <Typography className={classes.textoTitulo} ><b>Historia</b></ Typography>
+            <br />
             <Typography className={classes.textoAux}>
             Nacido en México, su madre trató infructuosamente de abortarlo. Su verdadero padre Mickey McFinnigan lo abandonó y fue 
             criado por Francis Griffin en Quahog. Desde niño empezó a mostrar signos de debilidad mental. A los 18 conoció a Lois 
             en el club campestre de Newport, poco después se casaron y procrearon a una niña: Meg Giffin, a quien querían abortar 
-            pero no pudieron debido a que el médico era manco. 4 años después procrearon a un niño llamado Chris Griffin por accidente 
+            pero no pudieron debido a que el médico era manco.<br /><br />4 años después procrearon a un niño llamado Chris Griffin por accidente 
             por un condón defectuoso; debido a una demanda impuesta a la empresa de preservativos, los Griffin ganan el caso y compran 
-            una casa en Quahog. Tras 12 años Peter y Lois conciben a su último hijo: Stewie Griffin. Peter trabajó desde los años 70 
+            una casa en Quahog. Tras 12 años Peter y Lois conciben a su último hijo: Stewie Griffin.<br /><br />Peter trabajó desde los años 70 
             para la fábrica de juguetes Feliz Fortuna, como un obrero de ensamble, después recoge a un perro de la calle llamado Brian 
             quien se convertiría en su mejor amigo. Peter pierde su empleo debido a la muerte de su jefe, dedicándose a ser pescador, 
             actualmente trabaja para la Cervecería Pawtucket en donde está bajo el cuidado de su jefa Angela.
@@ -156,6 +161,9 @@ export default function PeterG({ user, setUser }) {
             <div className={classes.divBoton}>
                 <Button className={classes.buttonlog} variant='contained' color='secondary' onClick={irPersonajes}>Regresar a personajes</Button>
             </div>
+            <br /> <br />
+
+            </Container>
             <br /> <br /> <br /> <br />
         </div>
     );

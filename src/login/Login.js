@@ -56,7 +56,7 @@ export default function Login({ setUser }) {
       setError(true)
       return
     }
-    else if (usuario === "jose" && contrasena === "teamo") {
+    else if (usuario === "jose" && contrasena === "atenea") {
       setValidar(false)
       setError(false)
       history.push('/inicio')

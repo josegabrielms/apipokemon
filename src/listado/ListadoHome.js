@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: '1em',
     },
     figuraInicio: {
-        width: '500px',
+        width: '550px',
         maxWidth: '85%',
         cursor: 'pointer',
     },
