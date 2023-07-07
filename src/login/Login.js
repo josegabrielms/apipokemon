@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Grid, Container, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Background2 from '../img/Background2.jpg'
+import Background2 from '../img/Background2.png'
 import LockIcon from '@mui/icons-material/Lock'
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(0.5),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.primary.main
   },
   formlog: {
     width: '100%',
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Login({ setUser }) {
+export default function Login() {
   const classes = useStyles();
   const history = useHistory();
   const [usuario, setUsuario] = useState("");
@@ -60,7 +60,8 @@ export default function Login({ setUser }) {
       setValidar(false)
       setError(false)
       history.push('/inicio')
-      setUser([usuario, contrasena])
+      localStorage.setItem('usuario.Info',usuario)
+      localStorage.setItem('contrasena.Info',contrasena)
     }
     else {
       setValidar(true)
@@ -79,7 +80,7 @@ export default function Login({ setUser }) {
             <TextField
               fullWidth
               autoFocus
-              color='secondary'
+              color='primary'
               margin='normal'
               variant='outlined'
               label='Usuario'
@@ -90,7 +91,7 @@ export default function Login({ setUser }) {
             <TextField
               fullWidth
               type='password'
-              color='secondary'
+              color='primary'
               margin='normal'
               variant='outlined'
               label='Contraseña'
@@ -101,7 +102,7 @@ export default function Login({ setUser }) {
             <Button
               fullWidth
               variant='contained'
-              color='secondary'
+              color='primary'
               className={classes.buttonlog}
               onClick={handleSubmit}
             >

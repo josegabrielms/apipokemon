@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import FGfondo from '../img/FGfondo.jpg'
-import PeterLogo from '../img/PeterLogo.png'
+import AshLogo from '../img/AshLogo.png'
 import { AppBar, Toolbar, CssBaseline, Button, IconButton, Typography, Drawer, Paper, Divider, Container } from '@material-ui/core'
 import { Menu as MenuIcon } from '@mui/icons-material'
 import { makeStyles } from '@material-ui/core/styles'
@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center'
     },
     imgDrawer: {
-        height: 100,
-        marginLeft: 30,
+        height: 150,
+        marginLeft: 25,
         marginRight: 'auto'
     },
     botonDrawerSup: {
@@ -63,30 +63,28 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function ListadoHome({ user, setUser }) {
+export default function ListadoHome() {
 
     const classes = useStyles();
     const history = useHistory();
+    const getUsuario=localStorage.getItem('usuario.Info');
+    const getContrasena=localStorage.getItem('contrasena.Info');
     const [open, setOpen] = useState(false)
 
     const verifyLogin = () => {
-        if (user.length < 1) {
-            history.push('/')
-        }
+        if (getUsuario&&getContrasena) {}
+        else {history.push('/')}
     }
 
     const handleLogout = () => {
-        setUser([])
+        localStorage.clear()
         history.push('/')
     }
     const irInicio = () => { history.push('/inicio') }
-    const irPersonajes = () => { history.push('/personajes') }
-    const irPeterG = () => { history.push('/petergriffin') }
-    const irLoisG = () => { history.push('/loisgriffin') }
-    const irMegG = () => { history.push('/meggriffin') }
-    const irChrisG = () => { history.push('/chrisgriffin') }
-    const irStewieG = () => { history.push('/stewiegriffin') }
-    const irBrianG = () => { history.push('/briangriffin') }
+    const irPersonajes = () => { history.push('/pokemon') }
+    const irDetalle = () => { 
+        history.push('/detalle') 
+    }
 
     return (
         <div>
@@ -94,12 +92,12 @@ export default function ListadoHome({ user, setUser }) {
 
             <>
                 <CssBaseline />
-                <AppBar color='secondary'>
+                <AppBar color='primary'>
                     <Toolbar>
                         <IconButton edge='start' color='inherit' onClick={() => setOpen(true)}>
                             <MenuIcon />
                         </IconButton>
-                        <Typography style={{ flexGrow: 1 }}>FAMILY GUY</Typography>
+                        <Typography style={{ flexGrow: 1 }}>API POKÉMON</Typography>
                         <Button variant='text' color='inherit' onClick={handleLogout}>Cerrar sesión</Button>
                     </Toolbar>
                 </AppBar>
@@ -109,22 +107,17 @@ export default function ListadoHome({ user, setUser }) {
                             <IconButton edge='start' color='inherit' onClick={() => setOpen(false)}>
                                 <MenuIcon />
                             </IconButton>
-                            <img src={PeterLogo} alt='Peter Griffin' className={classes.imgDrawer} />
+                            <img src={AshLogo} alt='Ash Ketchum' className={classes.imgDrawer} />
                         </div>
                         <Divider />
                         <Button variant='text' color='inherit' onClick={irInicio} className={classes.botonDrawerSup}>Página de Inicio</Button>
-                        <Button variant='text' color='inherit' onClick={irPersonajes} className={classes.botonDrawerSup}>Personajes</Button>
+                        <Button variant='text' color='inherit' onClick={irPersonajes} className={classes.botonDrawerSup}>Listado Pokémon</Button>
                         <Divider />
-                        <Button variant='text' color='inherit' onClick={irPeterG} className={classes.botonDrawerInf}>Peter Griffin</Button>
-                        <Button variant='text' color='inherit' onClick={irLoisG} className={classes.botonDrawerInf}>Lois Griffin</Button>
-                        <Button variant='text' color='inherit' onClick={irMegG} className={classes.botonDrawerInf}>Meg Griffin</Button>
-                        <Button variant='text' color='inherit' onClick={irChrisG} className={classes.botonDrawerInf}>Chris Griffin</Button>
-                        <Button variant='text' color='inherit' onClick={irStewieG} className={classes.botonDrawerInf}>Stewie Griffin</Button>
-                        <Button variant='text' color='inherit' onClick={irBrianG} className={classes.botonDrawerInf}>Brian Griffin</Button>
+                        <Button variant='text' color='inherit' onClick={irDetalle} className={classes.botonDrawerInf}>Detalle</Button>
                     </Paper>
                 </Drawer>
                 <footer className={classes.footer}>
-                    <Container maxWidth='5m'>
+                    <Container maxWidth='lg'>
                         <Typography align='center'>Jose Gabriel Mendoza Santos <br /> Todos a la U - {new Date().getFullYear()}</Typography>
                     </Container>
                 </footer>
@@ -133,17 +126,17 @@ export default function ListadoHome({ user, setUser }) {
             {/* CONTENIDO */}
             <br /> <br /> <br /> <br />
             <Typography className={classes.textoTitulo} >
-                <b>Bienvenido al inicio, {user[0]}</b>
+                <b>Bienvenido al inicio, {getUsuario}</b>
             </ Typography>
             <div className={classes.divFigura}>
-                <img src={FGfondo} className={classes.figuraInicio} alt="Family guy logo" onClick={irPersonajes} />
+                <img src={FGfondo} className={classes.figuraInicio} alt="Fondo Pokémon" onClick={irPersonajes} />
             </div>
             <Typography className={classes.textoAux}>
-                En esta página podrás conocer acerca de los personajes principales de la serie Family Guy.
+                En esta página podrás conocer un poco más acerca de los Pokémon.
             </Typography>
             <br />
             <div className={classes.divBoton}>
-                <Button className={classes.buttonlog} variant='contained' color='secondary' onClick={irPersonajes}>Ver personajes principales</Button>
+                <Button className={classes.buttonlog} variant='contained' color='primary' onClick={irPersonajes}>Ver Pokémon</Button>
             </div>
             <br /> <br /> <br /> <br />
         </div>
